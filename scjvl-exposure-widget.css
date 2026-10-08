@@ -1,0 +1,305 @@
+/* ==========================================================================
+   SCJVL — Exposure Events widget custom stylesheet
+   Colors sampled directly from the SCJVL Wix site screenshots + editor
+   swatches. Host this file publicly (text/css) and paste its URL into
+   the "Custom CSS Url" field in the Exposure Events widget settings.
+   ========================================================================== */
+
+:root {
+  --scjvl-navy: #123b5d;        /* brand swatch: primary navy */
+  --scjvl-navy-dark: #0e1b2b;   /* deep navy used on dark panels (Quick Links box) */
+  --scjvl-blue: #4f83a8;        /* brand swatch: secondary blue */
+  --scjvl-blue-bold: #0055a4;   /* richer blue used in "GROW." heading + Register button */
+  --scjvl-orange: #f47b32;      /* brand swatch: primary orange */
+  --scjvl-orange-light: #ffc760;/* lighter stop used in button/nav gradients */
+  --scjvl-orange-dark: #ff9c4a; /* darker stop used in button/nav gradients */
+  --scjvl-peach: #ffe3cc;       /* brand swatch: light cream/peach background */
+  --scjvl-black: #000000;
+  --scjvl-white: #ffffff;
+
+  --scjvl-font: 'Neue Haas Unica Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Neue Haas Unica Pro is a commercial Monotype font, not available from
+   Google Fonts or any free CDN. Wix licenses it for use on your Wix pages
+   only, that license does not extend to files you host elsewhere, so it
+   will not legally carry over into this widget. The font-family above
+   will fall back to Helvetica Neue / Arial, which is a close visual match.
+   If you own separate web-font files for Neue Haas Unica Pro (e.g. from
+   Monotype/Fonts.com), you can self-host them here instead:
+
+   @font-face {
+     font-family: 'Neue Haas Unica Pro';
+     src: url('https://your-css-host.example.com/fonts/NeueHaasUnicaPro-Bold.woff2') format('woff2');
+     font-weight: 700;
+   }
+*/
+
+/* One stylesheet for every Exposure widget (schedule, teams, team, etc.).
+   It is only loaded inside the widget iframes via data-css, so rules are
+   scoped with "html body" rather than a page-specific body class. The teams
+   page has no "widgets-…" body class, which is why class scoping missed it. */
+html body {
+  font-family: var(--scjvl-font);
+  background-color: var(--scjvl-white);
+  color: var(--scjvl-navy);
+}
+
+/* Section headings: Standings / Schedule / Champions
+   Matches the bold black caption + orange underline used on your site
+   (e.g. "SCJVL NOTICES", "Under 13") */
+html body h2 {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--scjvl-black);
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 16px;
+  /* Underline the words only. A border-bottom also ran under the calendar
+     and fullscreen buttons that sit inside the Schedule heading. */
+  text-decoration: underline;
+  text-decoration-color: var(--scjvl-orange);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+/* Icon buttons inside headings: space them off the heading text */
+html body h2 .btn,
+html body h2 [class*="custom-btn"] {
+  margin-left: 14px;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+/* Division list items in the sidebar */
+html body .display-8 {
+  font-weight: 700;
+  color: var(--scjvl-navy);
+}
+
+/* Game cards */
+html body .card {
+  border: 1px solid rgba(18, 59, 93, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(18, 59, 93, 0.08);
+}
+
+html body .card-header {
+  background-color: var(--scjvl-peach);
+  color: var(--scjvl-navy);
+  font-weight: 600;
+  border-bottom: none;
+}
+
+html body .card-body {
+  background-color: var(--scjvl-white);
+}
+
+html body .card-footer {
+  background-color: var(--scjvl-white);
+  border-top: 1px solid rgba(18, 59, 93, 0.1);
+  color: var(--scjvl-blue);
+  font-size: 0.85rem;
+}
+
+/* Scores */
+html body .final-score {
+  color: var(--scjvl-navy);
+  font-weight: 800;
+}
+
+/* Primary buttons (Register-style pill, orange gradient — matches your
+   "Register" / "Fixture" buttons) */
+html body .btn-primary,
+html body .custom-btn-calendar,
+html body .btn-warning {
+  background: linear-gradient(90deg, var(--scjvl-orange-light) 0%, var(--scjvl-orange-dark) 100%);
+  border: none;
+  color: var(--scjvl-white);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 6px 18px;
+}
+
+html body .btn-primary:hover,
+html body .custom-btn-calendar:hover,
+html body .btn-warning:hover {
+  filter: brightness(0.95);
+}
+
+/* Secondary buttons (navy/blue, matches your dark "Register" button) */
+html body .btn-dark,
+html body .custom-btn-directions {
+  background-color: var(--scjvl-blue-bold);
+  border: none;
+  color: var(--scjvl-white);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 6px 18px;
+}
+
+html body .btn-dark:hover,
+html body .custom-btn-directions:hover {
+  background-color: var(--scjvl-navy);
+}
+
+/* Standings table */
+html body table.table-pool thead th {
+  background-color: var(--scjvl-navy-dark);
+  color: var(--scjvl-white);
+  font-weight: 700;
+  border: none;
+}
+
+html body table.table-pool td {
+  color: var(--scjvl-navy);
+}
+
+html body table.table-pool tbody tr:nth-child(odd) {
+  background-color: var(--scjvl-peach);
+}
+
+/* "Powered by" attribution — recolored to fit the palette, left in place
+   as required by Exposure Events' terms (must not be hidden/removed) */
+html body a.text-volleyball {
+  color: var(--scjvl-orange) !important;
+  font-weight: 600;
+}
+/* --------------------------------------------------------------------------
+   Links (team names in standings and game cards)
+   Exposure colours these red by default. Navy text, blue on hover so they
+   still read as clickable. Buttons are excluded so their own colours stay.
+   -------------------------------------------------------------------------- */
+html body a:not(.btn):not(.custom-btn-calendar):not(.custom-btn-directions),
+html body a:not(.btn):not(.custom-btn-calendar):not(.custom-btn-directions):visited,
+html body .text-danger,
+html body .text-volleyball {
+  color: var(--scjvl-navy) !important;
+  font-weight: 600;
+}
+
+html body a:not(.btn):not(.custom-btn-calendar):not(.custom-btn-directions):hover,
+html body a:not(.btn):not(.custom-btn-calendar):not(.custom-btn-directions):focus {
+  color: var(--scjvl-blue-bold) !important;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   TEAMS widget: one column per division, division name as the column header,
+   team names stacked underneath. 2 columns across at every page width. Exposure's markup is:
+     OUTER .row > .col-12.mb-4 (one per division) > h2 + INNER .row >
+       .col-12.col-sm-6.col-md-4.col-lg-3 > a
+   A division with no teams keeps its header; this stylesheet does not hide it.
+   -------------------------------------------------------------------------- */
+
+/* The widget's top-level wrapper becomes the grid of division columns.
+   Exposure may put every division in one .row or give each division its own
+   .row, so those rows are made "transparent" (display: contents) and the
+   division blocks become grid items either way. The notification banner
+   spans the full width above the grid. */
+html body div:has(> .row > [class*="col-"] > .row > [class*="col-"] > a[href*="divisionteamid"]) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+html body div:has(> .row > [class*="col-"] > .row > [class*="col-"] > a[href*="divisionteamid"]) > p,
+html body div:has(> .row > [class*="col-"] > .row > [class*="col-"] > a[href*="divisionteamid"]) > .alert {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+html body div:has(> .row > [class*="col-"] > .row > [class*="col-"] > a[href*="divisionteamid"]) > .row {
+  display: contents;
+}
+
+/* Each division is a white card */
+html body div:has(> .row > [class*="col-"] > .row > [class*="col-"] > a[href*="divisionteamid"]) > .row > [class*="col-"] {
+  flex: none;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: var(--scjvl-white);
+  border: 1px solid rgba(18, 59, 93, 0.10);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(18, 59, 93, 0.10);
+}
+
+/* Division name = column header */
+html body div:has(> .row > [class*="col-"] > .row > [class*="col-"] > a[href*="divisionteamid"]) > .row > [class*="col-"] > h2 {
+  display: block;
+  margin: 0;
+  padding: 14px 12px;
+  background: var(--scjvl-navy-dark);
+  color: var(--scjvl-white);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-align: center;
+  text-decoration: none;
+  border-bottom: 3px solid var(--scjvl-orange);
+}
+
+/* Teams stacked, one per row */
+html body .row:has(> [class*="col-"] > a[href*="divisionteamid"]) {
+  display: block;
+  margin: 0;
+  counter-reset: teams;
+}
+
+html body .row:has(> [class*="col-"] > a[href*="divisionteamid"]) > [class*="col-"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  counter-increment: teams;
+  border-bottom: 1px solid rgba(18, 59, 93, 0.08);
+}
+
+html body .row:has(> [class*="col-"] > a[href*="divisionteamid"]) > [class*="col-"]:nth-child(even) {
+  background-color: #fff3e8;
+}
+
+html body .row:has(> [class*="col-"] > a[href*="divisionteamid"]) a[href*="divisionteamid"] {
+  display: block;
+  padding: 11px 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14.5px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+html body .row:has(> [class*="col-"] > a[href*="divisionteamid"]) a[href*="divisionteamid"]:hover {
+  text-decoration: none;
+  color: var(--scjvl-blue-bold) !important;
+}
+
+/* "Teams: 5" counted automatically at the bottom of each column */
+html body .row:has(> [class*="col-"] > a[href*="divisionteamid"])::after {
+  content: "Teams: " counter(teams);
+  display: block;
+  padding: 8px 12px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--scjvl-blue);
+}
+
+/* Banners (e.g. the notifications hint): peach with an orange edge */
+html body .alert-primary,
+html body .alert-info {
+  background-color: var(--scjvl-peach);
+  border: 1px solid var(--scjvl-orange);
+  color: var(--scjvl-navy);
+  border-radius: 12px;
+}
+
+html body .alert-primary b,
+html body .alert-primary strong {
+  color: var(--scjvl-navy);
+}
